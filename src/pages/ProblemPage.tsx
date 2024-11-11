@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Answer {
   text: string;
@@ -12,7 +13,8 @@ interface TitleProps {
   Answers: Array<Answer>;
 }
 
-const Problems: FC<TitleProps> = ({ QuestionNumber, time, URL, Answers }) => {
+export const ProblemPage: FC<TitleProps> = ({ QuestionNumber, time, URL, Answers }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="w-screen p-5">
@@ -21,6 +23,9 @@ const Problems: FC<TitleProps> = ({ QuestionNumber, time, URL, Answers }) => {
           <h2>
             Tiempo Faltante: <span className="font-bold text-lg">{time}</span>
           </h2>
+          <button 
+          onClick={() => navigate("/")}
+          className='p-2 bg-red-500 text-white font-bold rounded-md'>Cancelar</button>
         </div>
 
         <div className="w-full mt-4 p-5 border rounded-md flex  justify-center align-middle">
@@ -47,4 +52,3 @@ const Problems: FC<TitleProps> = ({ QuestionNumber, time, URL, Answers }) => {
   );
 };
 
-export default Problems;

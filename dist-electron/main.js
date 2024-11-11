@@ -22,7 +22,6 @@ ipcMain.handle("loadCurrentProblemsFinished", async () => {
   const filePath = path.join(app.getPath("userData"), "data.json");
   try {
     const data = await fs.promises.readFile(filePath, "utf-8");
-    console.log("hello: ", data);
     return JSON.parse(data);
   } catch (error) {
     console.error("Error al leer los datos:", error);
@@ -47,6 +46,7 @@ function createWindow() {
   win.webContents.on("did-finish-load", () => {
     win == null ? void 0 : win.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
   });
+  win.webContents.openDevTools();
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL);
   } else {

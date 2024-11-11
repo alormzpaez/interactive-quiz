@@ -31,7 +31,7 @@ ipcMain.handle('loadCurrentProblemsFinished', async () => {
     const filePath = path.join(app.getPath('userData'), 'data.json');
     try {
         const data = await fs.promises.readFile(filePath, 'utf-8');
-        console.log("hello: ", data);
+        //console.log("hello: ", data);
         
         return JSON.parse(data);
     } catch (error) {

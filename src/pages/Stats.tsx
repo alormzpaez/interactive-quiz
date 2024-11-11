@@ -1,18 +1,36 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { UnitCardForResults } from '../components';
+import { useUnits } from '../hooks';
+import { FaArrowLeft } from 'react-icons/fa';
 
 export const Stats = () => {
 
   const navigate = useNavigate();
+  const { units } = useUnits();
   return (
     <div className="w-full min-h-screen flex flex-col items-center">
-        <div className="w-10/12 bg-red-300 flex flex-row items-center justify-around my-2">
+        <div className="w-10/12 bg-red-00 flex flex-row items-center justify-around my-2">
             <h1 className='text-3xl'>Estadisticas</h1>
             <button 
             onClick={() => navigate("/")}
-            className='p-2 bg-blue-500 rounded-sm font-bold text-white'>Volver</button>
+            className='p-2 bg-blue-500 rounded-sm font-bold text-white flex flex-row items-center justify-center gap-2 flex-nowrap'> <FaArrowLeft/> Volver</button>
         </div>
-        
+        <div className="w-10/12 bg-blue-00">
+        {
+              units.map((unit) => (
+                <UnitCardForResults
+                  key={unit.id} 
+                  id={unit.id}
+                  name={unit.name} 
+                  description={unit.description} 
+                  topics={unit.topics}
+                />
+              ))
+            }
+        </div>
+
+        <div className="w-full my-2"></div>
     </div>
   )
 }

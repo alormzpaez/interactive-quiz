@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
+import { FaClock } from 'react-icons/fa';
 
 interface Answer {
   text: string;
@@ -98,7 +99,7 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
               <button 
               onClick={handleCancelProblem}
               className='w-4/6 rounded-md border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3'>
-                Volver
+                Volver a inicio
               </button>
             )
             :

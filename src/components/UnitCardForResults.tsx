@@ -1,7 +1,7 @@
 import { FC, ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { UnitDataToShow } from '../interfaces';
-import { useProblemsToSolve } from '../hooks';
+import { useProblemsToSolve, useUnits } from '../hooks';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,topics }) => {
@@ -13,22 +13,35 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
     getSolvedProblemsCountByUnit, 
     getTotalProblemsCountByMethod, 
     getTotalProblemsCountByUnit,
-    startLoadingProblem,
-    getUnsolvedProblem,
-    getSolvedProblemsByUnitAndMethod
-  } = useProblemsToSolve();
+    problemContents,
+    startLoadingProblemSolved,
 
-  const handleNavigate = async(method_id: number) => {
+    getSolvedProblemsByUnitAndMethod,
+    problemsGlobal
+  } = useProblemsToSolve();
+  const { units } = useUnits();
+
+  const handleNavigate = async(method_id: number, type: number) => {
     
 
-    const problem = await getUnsolvedProblem(id, method_id)
-    if( problem ){
-      startLoadingProblem(problem);
-      navigate("/problem")
+    const problemSolved = await getSolvedProblemsByUnitAndMethod(id, method_id).find(x => x.problem_type === type)
+    const problemGlobal = problemsGlobal.find(p => p.unit_id === id && p.method_id === method_id && p.problems.some(x => x.type === type));
+    
+    if( problemGlobal ){
+      startLoadingProblemSolved({
+        unit_id: problemGlobal.unit_id,
+        method_id: problemGlobal.method_id,
+        type: type,
+        correct_answer: problemSolved?.correct_answer || "",
+        method_name: problemContents.find((x) => x.unit_id === id && x.methods.some(m => m.id === method_id))?.methods.find(x => x.id === method_id)?.method_name || "",
+        options: problemGlobal.problems.find(x => x.type === type)?.options || [],
+        unit_name: units.find(x => x.id === id)?.name || "",
+      });
+      navigate("/problemSolved")
       return;
     }
 
-    alert("Ya no hay problemas disponibles para la unidad y metodo")
+    alert("Error al obtener el problema")
     
   }
 
@@ -107,7 +120,10 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
                                     {
                                       solvedProblemsByUnitAndMethod?.map((p, pI) => {
                                         return(
-                                          <tr key={pI} className='hover:bg-blue-500 hover:text-white text-gray-800'>
+                                          <tr 
+                                          key={pI} 
+                                          onClick={() => handleNavigate(method.id, p.problem_type)}
+                                          className='hover:bg-blue-500 hover:text-white text-gray-800'>
                                             <td className=' text-center'>{p.problem_type}</td>
                                             <td className=' text-center'>{p.correct_answer}</td>
                                             <td className=' text-center'>{p.problem_type}</td>

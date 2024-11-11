@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react"
-import { ProblemData, ProblemSolvedInLocalDB, UnitDataToCompareWithLocalDB } from "../interfaces";
+import { MethodProblemsData, ProblemData, ProblemSolvedInLocalDB, UnitDataToCompareWithLocalDB, UnitsContentsDataInterface } from "../interfaces";
 import { globalUnitProblems, unitData, UnitsContentsData } from "../data";
-import { onLoadProblem, useAppDispatch, useAppSelector } from "../store";
+import { onLoadProblem, onLoadProblemSolved, useAppDispatch, useAppSelector } from "../store";
 import { CurrentProblemShowing } from "../interfaces/ProblemSlice";
 
 
 export const useProblemsToSolve = () => {
     const [problemsSolved, setProblemsSolved] = useState<ProblemSolvedInLocalDB[]>([]);
+    const [problemsGlobal, setProblemsGlobal] = useState<MethodProblemsData[]>([]);
+    const [problemContents, setproblemContents] = useState<UnitsContentsDataInterface[]>([]);
     const dispatch = useAppDispatch();
     const { problem } = useAppSelector(store => store.problem)
 
     const chargeProblemsSolved = async() => {
       const problemsSolved = await backend.loadData();
       setProblemsSolved(problemsSolved || []);
+
+      const problemsTotal = [...globalUnitProblems];
+      setProblemsGlobal(problemsTotal || []);
+
+      const problemsContents = [...UnitsContentsData];
+      setproblemContents(problemsContents || []);
     }
     const checkIfProblemIsAlreadySolved = async(data: UnitDataToCompareWithLocalDB): Promise<boolean> => {
       const arr = [...problemsSolved];
@@ -127,6 +135,15 @@ export const useProblemsToSolve = () => {
   }
 
 
+  const startLoadingProblemSolved = async(problem: CurrentProblemShowing) => {
+    dispatch( onLoadProblemSolved(problem) );
+  }
+
+  const startCleaningProblemSolved = async() => {
+    dispatch( onLoadProblemSolved(null) );
+  }
+
+
 
 
     useEffect(() => {
@@ -137,6 +154,8 @@ export const useProblemsToSolve = () => {
   return {
     currentProblem: problem,
     problemsSolved,
+    problemsGlobal,
+    problemContents,
     saveNewProblemSolved,
     checkIfProblemIsAlreadySolved,
     getSolvedProblemsCountByMethod,
@@ -147,6 +166,8 @@ export const useProblemsToSolve = () => {
     getUnsolvedProblem,
     startLoadingProblem,
     startCleaningProblem,
+    startCleaningProblemSolved,
+    startLoadingProblemSolved,
     getSolvedProblemsByUnitAndMethod
   }
 }

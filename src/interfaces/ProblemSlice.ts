@@ -10,5 +10,6 @@ export interface CurrentProblemShowing {
 } 
 
 export interface ProblemInitialState {
-    problem: CurrentProblemShowing | null
+    problem: CurrentProblemShowing | null,
+    problemSolved: CurrentProblemShowing | null
 }

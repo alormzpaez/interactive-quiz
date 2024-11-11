@@ -4,7 +4,8 @@ import { CurrentProblemShowing, ProblemInitialState } from "../../interfaces/Pro
 
 
 const initialState: ProblemInitialState = {
-    problem: null
+    problem: null,
+    problemSolved: null,
 }
 
 export const problemSlice = createSlice({
@@ -19,8 +20,16 @@ export const problemSlice = createSlice({
             state.problem = null;
          }
        },
+       onLoadProblemSolved: (state, action: PayloadAction<CurrentProblemShowing | null>) => {
+         if(action.payload){
+            state.problem = {...action.payload};
+         }
+         else{
+            state.problem = null;
+         }
+       }
        
     }
 });
 
-export const { onLoadProblem } = problemSlice.actions;
+export const { onLoadProblem, onLoadProblemSolved } = problemSlice.actions;

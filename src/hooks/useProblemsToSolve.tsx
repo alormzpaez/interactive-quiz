@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
 import { ProblemData, ProblemSolvedInLocalDB, UnitDataToCompareWithLocalDB } from "../interfaces";
-import { globalUnitProblems } from "../data";
+import { globalUnitProblems, unitData, UnitsContentsData } from "../data";
+import { onLoadProblem, useAppDispatch, useAppSelector } from "../store";
+import { CurrentProblemShowing } from "../interfaces/ProblemSlice";
 
 
 export const useProblemsToSolve = () => {
     const [problemsSolved, setProblemsSolved] = useState<ProblemSolvedInLocalDB[]>([]);
+    const dispatch = useAppDispatch();
+    const { problem } = useAppSelector(store => store.problem)
 
     const chargeProblemsSolved = async() => {
       const problemsSolved = await backend.loadData();
@@ -27,8 +31,10 @@ export const useProblemsToSolve = () => {
       const res = await backend.saveData(arr);
       if(res.success){
         console.log("Problema guardado correctamente")
+        return true;
       }else{
         console.error("Hubo un error al guardar el problema resuelto")
+        return false;
       }
     }
     const resetProblemsSolved = async() => {
@@ -36,14 +42,16 @@ export const useProblemsToSolve = () => {
       const res = await backend.saveData([]);
       if(res.success){
         console.log("Problema guardado correctamente")
+        return true;
       }else{
         console.error("Hubo un error al guardar el problema resuelto")
+        return false;
       }
     }
 
   // Obtener la cantidad de problemas resueltos por método
-  const getSolvedProblemsCountByMethod = (methodId: number) => {
-    return problemsSolved?.filter((problem) => problem.method_id === methodId).length;
+  const getSolvedProblemsCountByMethod = (unitId: string, methodId: number) => {
+    return problemsSolved?.filter((problem) => problem.unit_id === unitId && problem.method_id === methodId).length;
   };
 
   // Obtener la cantidad de problemas resueltos por unidad
@@ -52,8 +60,8 @@ export const useProblemsToSolve = () => {
   };
 
   // Obtener la cantidad total de problemas por método
-  const getTotalProblemsCountByMethod = (methodId: number) => {
-    return globalUnitProblems?.filter((problem) => problem.method_id === methodId).length;
+  const getTotalProblemsCountByMethod = (unitId: string, methodId: number) => {
+    return globalUnitProblems?.filter((problem) => problem.unit_id === unitId && problem.method_id === methodId)?.[0]?.problems?.length;
   };
 
   // Obtener la cantidad total de problemas por unidad
@@ -62,7 +70,7 @@ export const useProblemsToSolve = () => {
   };
   
 
-  const getUnsolvedProblem = (unitId: string, methodId: number): ProblemData | null => {
+  const getUnsolvedProblem = (unitId: string, methodId: number): CurrentProblemShowing | null => {
     // Encontrar los problemas de la unidad y método especificados
     const methodData = globalUnitProblems.find(
       (data) => data.unit_id === unitId && data.method_id === methodId
@@ -84,7 +92,16 @@ export const useProblemsToSolve = () => {
   
       // Si el problema no está resuelto, lo retornamos
       if (!isSolved) {
-        return problem;
+        return {
+          correct_answer: problem.correct_answer,
+          method_id: methodId,
+          options: problem.options,
+          type: problem.type,
+          unit_id: unitId,
+          unit_name: UnitsContentsData.find(u => u.unit_id === unitId && u.methods.some(m => m.id === methodId))?.topic || "",
+          method_name: UnitsContentsData.find(u => u.unit_id === unitId && u.methods.some(m => m.id === methodId))?.methods?.find(x => x.id === methodId)?.method_name || ""
+          
+        };
       }
     }
   
@@ -92,7 +109,13 @@ export const useProblemsToSolve = () => {
     return null;
   }
   
+  const startLoadingProblem = async(problem: CurrentProblemShowing) => {
+    dispatch( onLoadProblem(problem) );
+  }
 
+  const startCleaningProblem = async() => {
+    dispatch( onLoadProblem(null) );
+  }
 
 
 
@@ -103,6 +126,7 @@ export const useProblemsToSolve = () => {
 
 
   return {
+    currentProblem: problem,
     problemsSolved,
     saveNewProblemSolved,
     checkIfProblemIsAlreadySolved,
@@ -111,6 +135,8 @@ export const useProblemsToSolve = () => {
     getTotalProblemsCountByMethod,
     getTotalProblemsCountByUnit,
     resetProblemsSolved,
-    getUnsolvedProblem
+    getUnsolvedProblem,
+    startLoadingProblem,
+    startCleaningProblem,
   }
 }

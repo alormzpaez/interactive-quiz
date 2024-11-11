@@ -6,7 +6,7 @@ import { useProblemsToSolve, useUnits } from '../hooks';
 export const UnitsPage = () => {
   const navigate = useNavigate();
   const { units } = useUnits();
-  const {resetProblemsSolved} = useProblemsToSolve()
+  //const {resetProblemsSolved} = useProblemsToSolve()
 
   return (
     <div className="w-full min-h-screen bg-blue-500 flex flex-col items-center">

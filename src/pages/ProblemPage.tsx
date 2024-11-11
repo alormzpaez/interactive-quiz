@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useProblemsToSolve } from '../hooks';
 
 interface Answer {
   text: string;
@@ -13,39 +14,103 @@ interface TitleProps {
   Answers: Array<Answer>;
 }
 
-export const ProblemPage: FC<TitleProps> = ({ QuestionNumber, time, URL, Answers }) => {
+export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
   const navigate = useNavigate();
+  const [optionSelected, setOptionSelected] = useState<number>();
+  const [showAnswer, setShowAnswer] = useState<boolean>(false);
+  const { currentProblem, startCleaningProblem, saveNewProblemSolved } = useProblemsToSolve()
+  const handleCancelProblem = () => {
+    startCleaningProblem()
+    navigate("/")
+  }
+  const handleSubmitProblem = async() => {
+    if(optionSelected === undefined) {
+      alert("Por favor seleccione una opcion");
+      return;
+    }
+    // TODO: Save problem solved and update state
+    setShowAnswer(true)
+    let res = await saveNewProblemSolved({
+      unit_id: currentProblem?.unit_id || "",
+      method_id: currentProblem?.method_id || 1,
+      problem_type: currentProblem?.type || 1,
+      solved_at: new Date().toISOString(),
+      problem_answer: currentProblem?.options[optionSelected] || "",
+      correct_answer: currentProblem?.correct_answer || "",
+    });
+    
+    if(res){
+      console.log("Problem Solved Correctly");
+      //startCleaningProblem()
+      //navigate("/")
+    }
+    //end
+    //startCleaningProblem()
+    //navigate("/")
+  }
   return (
     <>
       <div className="w-screen p-5">
         <div className="flex flex-row place-content-between w-full border rounded-md p-5 border-gray-300">
-          <h1 className="font-bold text-lg">Pregunta #{QuestionNumber}</h1>
+          <h1 className="font-bold text-lg">{currentProblem?.unit_name} / {currentProblem?.method_name} / Tipo {currentProblem?.type}</h1>
           <h2>
             Tiempo Faltante: <span className="font-bold text-lg">{time}</span>
           </h2>
-          <button 
-          onClick={() => navigate("/")}
-          className='p-2 bg-red-500 text-white font-bold rounded-md'>Cancelar</button>
+          {
+            !showAnswer && (
+              <button 
+              onClick={() => handleCancelProblem()}
+              className='p-2 bg-red-500 text-white font-bold rounded-md'>Cancelar</button>
+            )
+          }
+          
         </div>
 
         <div className="w-full mt-4 p-5 border rounded-md flex  justify-center align-middle">
-          <img className="w-2/3 h-full border rounded-xl" src={URL} alt="Problem Image" />
+          <img className="w-3/6 h-full border rounded-xl" src={URL} alt="Problem Image" />
         </div>
 
         <div className="w-full">
-          {Answers.map((answer, index) => (
+          {currentProblem?.options?.map((answer, index) => (
             <div
               key={index}
-              className={`p-3 my-2 border rounded-md ${
-                answer.isCorrect ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
+              onClick={()=> setOptionSelected(index)}
+              className={`p-3 my-2 border rounded-md cursor-pointer hover:bg-blue-500 hover:text-white ${
+                showAnswer ? (
+                  answer === currentProblem.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
+                ) : optionSelected === index ? "bg-blue-500 text-white" : ""
               }`}
             >
-              <span>{answer.text}</span>
-              <span className="ml-2 font-bold">
-                {answer.isCorrect ? 'Correcta' : 'Incorrecta'}
-              </span>
+              <span>{answer}</span>
+              {
+                showAnswer &&
+                <span className="ml-2 font-bold">
+                  {answer === currentProblem.correct_answer ? 'Correcta' : 'Incorrecta'}
+                </span>
+              }
             </div>
           ))}
+        </div>
+        <div className="w-full flex justify-center">
+          {
+            showAnswer ? 
+            (
+              <button 
+              onClick={handleCancelProblem}
+              className='w-4/6 rounded-md border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3'>
+                Volver
+              </button>
+            )
+            :
+            (
+              <button 
+              onClick={handleSubmitProblem}
+              className='w-4/6 rounded-md border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3'>
+                Aceptar
+              </button>
+            )
+          }
+          
         </div>
       </div>
     </>

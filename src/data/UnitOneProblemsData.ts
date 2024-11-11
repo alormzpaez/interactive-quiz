@@ -1,8 +1,9 @@
+import { MethodProblemsData } from "../interfaces";
 import { UnitIds } from "./UnitsData";
 
 const urlImage = "https://static.vecteezy.com/system/resources/thumbnails/033/135/472/small_2x/ai-generative-beautiful-winter-landscape-with-snow-covered-trees-photo.jpg";
 
-export const UnitOneProblemsData = [
+export const UnitOneProblemsData : MethodProblemsData[] = [
     {
         unit_id: UnitIds.U1_ID,
         method_id: 1,

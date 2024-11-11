@@ -1,4 +1,4 @@
-import { UnitData } from "../interfaces/UnitDataInterface";
+import { UnitData } from "../interfaces";
 
 export const UnitIds = {
     U1_ID: "U1-Interpolacion-Y-Solucion-De-Ecuaciones-No-Lineales",

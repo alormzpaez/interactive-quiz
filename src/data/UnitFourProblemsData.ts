@@ -1,6 +1,7 @@
+import { MethodProblemsData } from "../interfaces";
 import { UnitIds } from "./UnitsData";
 
-export const UnitFourProblemsData = [
+export const UnitFourProblemsData : MethodProblemsData[] = [
     {
         unit_id: UnitIds.U4_ID,
         method_id: 1,

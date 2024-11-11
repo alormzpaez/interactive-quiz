@@ -1,4 +1,4 @@
-import { UnitsContentsDataInterface } from "../interfaces/UnitsContentsDataInterface";
+import { UnitsContentsDataInterface } from "../interfaces";
 import { UnitIds } from "./UnitsData";
 
 export const UnitsContentsData: UnitsContentsDataInterface[] = [

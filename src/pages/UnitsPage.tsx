@@ -1,6 +1,6 @@
 
 import { useNavigate } from 'react-router-dom';
-import { UnitCard } from '../components/UnitCard'
+import { UnitCard } from '../components';
 
 export const UnitsPage = () => {
   const navigate = useNavigate();

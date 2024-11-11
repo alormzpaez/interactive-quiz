@@ -1,19 +1,23 @@
 
 import { useNavigate } from 'react-router-dom';
 import { UnitCard } from '../components';
-import { useUnits } from '../hooks';
+import { useProblemsToSolve, useUnits } from '../hooks';
 
 export const UnitsPage = () => {
   const navigate = useNavigate();
   const { units } = useUnits();
+  const {resetProblemsSolved} = useProblemsToSolve()
 
   return (
-    <div className="w-full min-h-screen bg-red-00 flex flex-col items-center">
+    <div className="w-full min-h-screen bg-blue-500 flex flex-col items-center">
         <div className="w-full flex flex-row items-center justify-around my-4">
             
             <h1 className="font-bold text-4xl">Unidades</h1>
             <button 
-            onClick={() => navigate("/stats")}
+            onClick={() => {
+              navigate("/stats")
+              //resetProblemsSolved()
+            }}
             className="p-2 rounded-sm bg-blue-500 text-white">Resultados</button>
         
         </div>

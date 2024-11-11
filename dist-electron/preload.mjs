@@ -18,5 +18,11 @@ electron.contextBridge.exposeInMainWorld("ipcRenderer", {
     return electron.ipcRenderer.invoke(channel, ...omit);
   }
   // You can expose other APTs you need here.
-  // ...
+  // ...  
 });
+const backend = {
+  nodeVersion: async (msg) => await electron.ipcRenderer.invoke("get-solved-problems", msg),
+  saveData: async (data) => await electron.ipcRenderer.invoke("saveData", data),
+  loadData: async () => await electron.ipcRenderer.invoke("loadCurrentProblemsFinished")
+};
+electron.contextBridge.exposeInMainWorld("backend", backend);

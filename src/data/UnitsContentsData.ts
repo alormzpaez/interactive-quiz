@@ -1,5 +1,9 @@
 import { UnitsContentsDataInterface } from "../interfaces";
+import { UnitFourProblemsData } from "./UnitFourProblemsData";
+import { UnitOneProblemsData } from "./UnitOneProblemsData";
 import { UnitIds } from "./UnitsData";
+import { UnitThreeProblemsData } from "./UnitThreeProblemsData";
+import { UnitTwoProblemsData } from "./UnitTwoProblemsData";
 
 export const UnitsContentsData: UnitsContentsDataInterface[] = [
     {
@@ -187,3 +191,5 @@ export const UnitsContentsData: UnitsContentsDataInterface[] = [
         ]
     },
 ];
+
+export const globalUnitProblems = [ ...UnitOneProblemsData, ...UnitTwoProblemsData, ...UnitThreeProblemsData, ...UnitFourProblemsData]

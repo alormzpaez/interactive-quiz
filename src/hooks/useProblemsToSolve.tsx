@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { MethodProblemsData, ProblemData, ProblemSolvedInLocalDB, UnitDataToCompareWithLocalDB, UnitsContentsDataInterface } from "../interfaces";
+import { DataToGetProblemImage, MethodProblemsData, ProblemData, ProblemSolvedInLocalDB, UnitDataToCompareWithLocalDB, UnitsContentsDataInterface } from "../interfaces";
 import { globalUnitProblems, unitData, UnitsContentsData } from "../data";
 import { onLoadProblem, onLoadProblemSolved, useAppDispatch, useAppSelector } from "../store";
 import { CurrentProblemShowing, CurrentProblemSolvedShowing } from "../interfaces/ProblemSlice";
@@ -143,6 +143,17 @@ export const useProblemsToSolve = () => {
     dispatch( onLoadProblemSolved(null) );
   }
 
+  const getImageForProblem = async(data: DataToGetProblemImage) => {
+   
+    try {
+      const filePath = await backend.loadImageForProblem(data);
+      return filePath;
+    } catch (error) {
+      console.error('Error al leer la imagen:', error);
+      return null;
+    }
+  }
+
 
 
 
@@ -169,6 +180,7 @@ export const useProblemsToSolve = () => {
     startCleaningProblem,
     startCleaningProblemSolved,
     startLoadingProblemSolved,
-    getSolvedProblemsByUnitAndMethod
+    getSolvedProblemsByUnitAndMethod,
+    getImageForProblem
   }
 }

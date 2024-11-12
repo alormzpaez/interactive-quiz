@@ -23,6 +23,7 @@ electron.contextBridge.exposeInMainWorld("ipcRenderer", {
 const backend = {
   nodeVersion: async (msg) => await electron.ipcRenderer.invoke("get-solved-problems", msg),
   saveData: async (data) => await electron.ipcRenderer.invoke("saveData", data),
-  loadData: async () => await electron.ipcRenderer.invoke("loadCurrentProblemsFinished")
+  loadData: async () => await electron.ipcRenderer.invoke("loadCurrentProblemsFinished"),
+  loadImageForProblem: async (data) => await electron.ipcRenderer.invoke("loadImageForProblem", data)
 };
 electron.contextBridge.exposeInMainWorld("backend", backend);

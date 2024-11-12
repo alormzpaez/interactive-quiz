@@ -1,5 +1,5 @@
 import { ipcRenderer, contextBridge } from 'electron'
-import { ProblemSolvedInLocalDB } from '../src/interfaces'
+import { DataToGetProblemImage, ProblemSolvedInLocalDB } from '../src/interfaces'
 
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
@@ -28,6 +28,7 @@ export const backend = {
   nodeVersion: async (msg: string): Promise<string> => await ipcRenderer.invoke("get-solved-problems", msg),
   saveData: async (data: any): Promise<{ success: boolean, error: string }> => await ipcRenderer.invoke("saveData", data),
   loadData: async (): Promise<ProblemSolvedInLocalDB[] | null> => await ipcRenderer.invoke("loadCurrentProblemsFinished"),
+  loadImageForProblem: async (data: DataToGetProblemImage): Promise<string | null> => await ipcRenderer.invoke("loadImageForProblem",data),
 };
 
 contextBridge.exposeInMainWorld("backend", backend);

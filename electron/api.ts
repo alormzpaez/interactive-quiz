@@ -1,6 +1,7 @@
 import {app, ipcMain, IpcMainInvokeEvent } from "electron"
 import * as fs from 'fs';
 import * as path from 'path';
+import { DataToGetProblemImage } from "../src/interfaces";
 
 
 ipcMain.handle("get-solved-problems",(event: IpcMainInvokeEvent, msg: string): string => {
@@ -31,11 +32,26 @@ ipcMain.handle('loadCurrentProblemsFinished', async () => {
     const filePath = path.join(app.getPath('userData'), 'data.json');
     try {
         const data = await fs.promises.readFile(filePath, 'utf-8');
-        console.log("path: ", filePath);
+        //console.log("path: ", filePath);
         
         return JSON.parse(data);
     } catch (error) {
         console.error('Error al leer los datos:', error);
+        return null;
+    }
+});
+
+// Función para leer imagen de problema
+ipcMain.handle('loadImageForProblem', async (event: IpcMainInvokeEvent, data: DataToGetProblemImage) => {
+    
+        
+    try {
+        const filePath = path.join(app.getAppPath(),"src", 'assets', "problems", data.unit_id, "" + data.method_id, "" + data.problem_type + ".png");
+        console.log("url para imagen y problema: ", filePath);
+        
+        return "file://" + filePath;
+    } catch (error) {
+        console.error('Error al leer la imagen desde node:', error);
         return null;
     }
 });

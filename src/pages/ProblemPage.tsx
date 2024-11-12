@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
 import { FaClock } from 'react-icons/fa';
@@ -19,7 +19,20 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
   const navigate = useNavigate();
   const [optionSelected, setOptionSelected] = useState<number>();
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
-  const { currentProblem, startCleaningProblem, saveNewProblemSolved } = useProblemsToSolve()
+  const [image, setImage] = useState<string>();
+
+  const { currentProblem, startCleaningProblem, saveNewProblemSolved, getImageForProblem } = useProblemsToSolve()
+  const handleGetImage = async() => {
+    let image = await getImageForProblem({
+      method_id: currentProblem?.method_id || 0,
+      problem_type: currentProblem?.type || 0,
+      unit_id: currentProblem?.unit_id || ""
+    });
+    
+    if(image){
+      setImage(image)
+    }
+  }
   const handleCancelProblem = () => {
     startCleaningProblem()
     navigate("/")
@@ -42,13 +55,15 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
     
     if(res){
       console.log("Problem Solved Correctly");
-      //startCleaningProblem()
-      //navigate("/")
     }
-    //end
-    //startCleaningProblem()
-    //navigate("/")
+    
   }
+
+  useEffect(() => {
+    handleGetImage()
+    
+  },[])
+
   return (
     <>
       <div className="w-screen p-5">
@@ -68,7 +83,7 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
         </div>
 
         <div className="w-full mt-4 p-5 border rounded-md flex  justify-center align-middle">
-          <img className="w-3/6 h-full border rounded-xl" src={URL} alt="Problem Image" />
+          <img className="h-[300px] border rounded-xl" src={image} alt="Problem Image" />
         </div>
 
         <div className="w-full">

@@ -22,10 +22,19 @@ ipcMain.handle("loadCurrentProblemsFinished", async () => {
   const filePath = path.join(app.getPath("userData"), "data.json");
   try {
     const data = await fs.promises.readFile(filePath, "utf-8");
-    console.log("path: ", filePath);
     return JSON.parse(data);
   } catch (error) {
     console.error("Error al leer los datos:", error);
+    return null;
+  }
+});
+ipcMain.handle("loadImageForProblem", async (event, data) => {
+  try {
+    const filePath = path.join(app.getAppPath(), "src", "assets", "problems", data.unit_id, "" + data.method_id, "" + data.problem_type + ".png");
+    console.log("url para imagen y problema: ", filePath);
+    return "file://" + filePath;
+  } catch (error) {
+    console.error("Error al leer la imagen desde node:", error);
     return null;
   }
 });
@@ -41,7 +50,8 @@ function createWindow() {
   win = new BrowserWindow({
     icon: path$1.join(process.env.VITE_PUBLIC, "electron-vite.svg"),
     webPreferences: {
-      preload: path$1.join(__dirname, "preload.mjs")
+      preload: path$1.join(__dirname, "preload.mjs"),
+      webSecurity: false
     }
   });
   win.webContents.on("did-finish-load", () => {

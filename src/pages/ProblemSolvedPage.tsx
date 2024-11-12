@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
 import { FaArrowLeft } from 'react-icons/fa';
@@ -19,12 +19,32 @@ export const ProblemSolvedPage: FC<TitleProps> = ({ URL }) => {
   const navigate = useNavigate();
   
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
-  const { currentProblemSolved, startCleaningProblemSolved  } = useProblemsToSolve();
+  const { currentProblemSolved, startCleaningProblemSolved, getImageForProblem  } = useProblemsToSolve();
+  const [image, setImage] = useState<string>();
+
+  const handleGetImage = async() => {
+    let image = await getImageForProblem({
+      method_id: currentProblemSolved?.method_id || 0,
+      problem_type: currentProblemSolved?.type || 0,
+      unit_id: currentProblemSolved?.unit_id || ""
+    });
+    
+    if(image){
+      setImage(image)
+    }
+  }
+
   const handleCancelProblem = () => {
     startCleaningProblemSolved();
     navigate("/stats");
 
   }
+
+
+  useEffect(() => {
+    handleGetImage()
+    
+  },[])
   
   return (
     <>
@@ -45,7 +65,7 @@ export const ProblemSolvedPage: FC<TitleProps> = ({ URL }) => {
         </div>
 
         <div className="w-full mt-4 p-5 border rounded-md flex  justify-center align-middle">
-          <img className="w-3/6 h-full border rounded-xl" src={URL} alt="Problem Image" />
+          <img className="h-[300px] border rounded-xl" src={image} alt="Problem Image" />
         </div>
 
         <div className="w-full">

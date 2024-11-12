@@ -23,6 +23,13 @@ export interface TopicToShow {
     methods: MethodInterface[];
 }
 
+
+export interface DataToGetProblemImage{
+    unit_id: string,
+    method_id: number,
+    problem_type: number
+}
+
 export interface UnitDataToCompareWithLocalDB{
     unit_id: string,
     method_id: number,

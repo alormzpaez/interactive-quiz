@@ -1,13 +1,22 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UnitCardForResults } from '../components';
-import { useUnits } from '../hooks';
-import { FaArrowLeft } from 'react-icons/fa';
+import { useProblemsToSolve, useUnits } from '../hooks';
+import { FaArrowLeft, FaExclamationTriangle } from 'react-icons/fa';
 
 export const Stats = () => {
 
   const navigate = useNavigate();
   const { units } = useUnits();
+  const {resetProblemsSolved} = useProblemsToSolve();
+  const handleReset = () => {
+    let confirmed = window.confirm("¿Seguro de reiniciar los problemas?");
+    if (confirmed) {
+      resetProblemsSolved();
+      navigate("/");
+    }
+    return;
+  }
   return (
     <div className="w-full min-h-screen flex flex-col items-center">
         <div className="w-10/12 bg-red-00 flex flex-row items-center justify-around my-2">
@@ -29,7 +38,11 @@ export const Stats = () => {
               ))
             }
         </div>
-
+        <div className="w-full flex flex-row items-center justify-center my-3">
+        <button 
+            onClick={handleReset}
+            className='p-2 bg-red-500 rounded-sm font-bold text-white flex flex-row items-center justify-center gap-2 flex-nowrap'> <FaExclamationTriangle/> Reiniciar Problemas</button>
+        </div>
         <div className="w-full my-2"></div>
     </div>
   )

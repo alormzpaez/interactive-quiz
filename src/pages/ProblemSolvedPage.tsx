@@ -3,22 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
 import { FaArrowLeft } from 'react-icons/fa';
 
-interface Answer {
-  text: string;
-  isCorrect: boolean;
-}
-
-interface TitleProps {
-  QuestionNumber: number;
-  time: string;
-  URL: string;
-  Answers: Array<Answer>;
-}
-
-export const ProblemSolvedPage: FC<TitleProps> = ({ URL }) => {
+export const ProblemSolvedPage = () => {
   const navigate = useNavigate();
   
-  const [showAnswer, setShowAnswer] = useState<boolean>(false);
   const { currentProblemSolved, startCleaningProblemSolved, getImageForProblem  } = useProblemsToSolve();
   const [image, setImage] = useState<string>();
 
@@ -54,13 +41,10 @@ export const ProblemSolvedPage: FC<TitleProps> = ({ URL }) => {
           <h2>
             Problema resuelto el: <span className="font-bold text-lg">{currentProblemSolved?.solved_at}</span>
           </h2>
-          {
-            !showAnswer && (
-              <button 
-              onClick={() => handleCancelProblem()}
-              className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap">  <FaArrowLeft/> Volver</button>
-            )
-          }
+          
+          <button 
+          onClick={() => handleCancelProblem()}
+          className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap">  <FaArrowLeft/> Volver</button>
           
         </div>
 

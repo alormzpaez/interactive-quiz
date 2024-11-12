@@ -1,22 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
-import { FaClock } from 'react-icons/fa';
 import { Timer } from '../components';
 
-interface Answer {
-  text: string;
-  isCorrect: boolean;
-}
-
-interface TitleProps {
-  QuestionNumber: number;
-  time: string;
-  URL: string;
-  Answers: Array<Answer>;
-}
-
-export const ProblemPage: FC<TitleProps> = () => {
+export const ProblemPage = () => {
   const navigate = useNavigate();
   const [optionSelected, setOptionSelected] = useState<number>();
   const [showAnswer, setShowAnswer] = useState<boolean>(false);

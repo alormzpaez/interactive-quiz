@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { UnitCardForResults } from '../components';
+import { Header, UnitCardForResults } from '../components';
 import { useProblemsToSolve, useUnits } from '../hooks';
 import { FaArrowLeft, FaExclamationTriangle } from 'react-icons/fa';
 
@@ -19,11 +19,14 @@ export const Stats = () => {
   }
   return (
     <div className="w-full min-h-screen flex flex-col items-center">
+        <div className="w-5/6">
+          <Header/>
+        </div>
         <div className="w-10/12 bg-red-00 flex flex-row items-center justify-around my-2">
-            <h1 className='text-3xl'>Estadisticas</h1>
+            <h1 className="font-bold text-4xl text-gray-600">Estadisticas</h1>
             <button 
             onClick={() => navigate("/")}
-            className='p-2 bg-blue-500 rounded-sm font-bold text-white flex flex-row items-center justify-center gap-2 flex-nowrap'> <FaArrowLeft/> Volver</button>
+            className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap">  <FaArrowLeft/> Volver</button>
         </div>
         <div className="w-10/12 bg-blue-00">
         {

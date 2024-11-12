@@ -38,7 +38,7 @@ export const ProblemSolvedPage: FC<TitleProps> = ({ URL }) => {
             !showAnswer && (
               <button 
               onClick={() => handleCancelProblem()}
-              className='p-2 bg-blue-500 rounded-sm font-bold text-white flex flex-row items-center justify-center gap-2 flex-nowrap'> <FaArrowLeft/> Volver</button>
+              className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap">  <FaArrowLeft/> Volver</button>
             )
           }
           

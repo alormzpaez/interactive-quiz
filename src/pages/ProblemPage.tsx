@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
 import { FaClock } from 'react-icons/fa';
+import { Timer } from '../components';
 
 interface Answer {
   text: string;
@@ -15,7 +16,7 @@ interface TitleProps {
   Answers: Array<Answer>;
 }
 
-export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
+export const ProblemPage: FC<TitleProps> = () => {
   const navigate = useNavigate();
   const [optionSelected, setOptionSelected] = useState<number>();
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
@@ -59,6 +60,11 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
     
   }
 
+  const handleOnComplete = () => {
+    alert("Fin del tiempo, Practica más =D")
+    navigate("/");
+  }
+
   useEffect(() => {
     handleGetImage()
     
@@ -69,9 +75,11 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
       <div className="w-screen p-5">
         <div className="flex flex-row place-content-between w-full border rounded-md p-5 border-gray-300">
           <h1 className="font-bold text-lg">{currentProblem?.unit_name} / {currentProblem?.method_name} / Tipo {currentProblem?.type}</h1>
-          <h2>
-            Tiempo Faltante: <span className="font-bold text-lg">{time}</span>
-          </h2>
+          
+          <Timer 
+            time={"1:00"}
+            onComplete={handleOnComplete}
+          />
           {
             !showAnswer && (
               <button 

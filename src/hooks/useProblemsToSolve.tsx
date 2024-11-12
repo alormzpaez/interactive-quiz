@@ -75,7 +75,7 @@ export const useProblemsToSolve = () => {
   // Obtener la cantidad total de problemas por unidad
   const getTotalProblemsCountByUnit = (unitId: string) => {
     let problems = globalUnitProblems?.filter((problem) => problem.unit_id === unitId).flatMap(x => x.problems).length//.length;
-    console.log("hola problemas: ", problems);
+    //console.log("hola problemas: ", problems);
     
     return problems;
   };
@@ -121,7 +121,7 @@ export const useProblemsToSolve = () => {
   }
 
   const getSolvedProblemsByUnitAndMethod = (unitId: string, methodId: number) => {
-    console.log("getSolvedProblemsByUnitAndMethod");
+    //console.log("getSolvedProblemsByUnitAndMethod");
     
     return problemsSolved?.filter(x => x.unit_id === unitId && x.method_id === methodId)
   }

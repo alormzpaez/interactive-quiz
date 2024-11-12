@@ -47,7 +47,7 @@ ipcMain.handle('loadImageForProblem', async (event: IpcMainInvokeEvent, data: Da
         
     try {
         const filePath = path.join(app.getAppPath(),"src", 'assets', "problems", data.unit_id, "" + data.method_id, "" + data.problem_type + ".png");
-        console.log("url para imagen y problema: ", filePath);
+        //console.log("url para imagen y problema: ", filePath);
         
         return "file://" + filePath;
     } catch (error) {

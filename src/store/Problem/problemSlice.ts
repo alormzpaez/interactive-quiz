@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CurrentProblemShowing, ProblemInitialState } from "../../interfaces/ProblemSlice";
+import { CurrentProblemShowing, CurrentProblemSolvedShowing, ProblemInitialState } from "../../interfaces/ProblemSlice";
 
 
 
@@ -20,12 +20,12 @@ export const problemSlice = createSlice({
             state.problem = null;
          }
        },
-       onLoadProblemSolved: (state, action: PayloadAction<CurrentProblemShowing | null>) => {
+       onLoadProblemSolved: (state, action: PayloadAction<CurrentProblemSolvedShowing | null>) => {
          if(action.payload){
-            state.problem = {...action.payload};
+            state.problemSolved = {...action.payload};
          }
          else{
-            state.problem = null;
+            state.problemSolved = null;
          }
        }
        

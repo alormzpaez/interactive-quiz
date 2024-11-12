@@ -22,6 +22,7 @@ ipcMain.handle("loadCurrentProblemsFinished", async () => {
   const filePath = path.join(app.getPath("userData"), "data.json");
   try {
     const data = await fs.promises.readFile(filePath, "utf-8");
+    console.log("path: ", filePath);
     return JSON.parse(data);
   } catch (error) {
     console.error("Error al leer los datos:", error);

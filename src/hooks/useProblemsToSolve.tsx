@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { MethodProblemsData, ProblemData, ProblemSolvedInLocalDB, UnitDataToCompareWithLocalDB, UnitsContentsDataInterface } from "../interfaces";
 import { globalUnitProblems, unitData, UnitsContentsData } from "../data";
 import { onLoadProblem, onLoadProblemSolved, useAppDispatch, useAppSelector } from "../store";
-import { CurrentProblemShowing } from "../interfaces/ProblemSlice";
+import { CurrentProblemShowing, CurrentProblemSolvedShowing } from "../interfaces/ProblemSlice";
 
 
 export const useProblemsToSolve = () => {
@@ -10,7 +10,7 @@ export const useProblemsToSolve = () => {
     const [problemsGlobal, setProblemsGlobal] = useState<MethodProblemsData[]>([]);
     const [problemContents, setproblemContents] = useState<UnitsContentsDataInterface[]>([]);
     const dispatch = useAppDispatch();
-    const { problem } = useAppSelector(store => store.problem)
+    const { problem, problemSolved } = useAppSelector(store => store.problem)
 
     const chargeProblemsSolved = async() => {
       const problemsSolved = await backend.loadData();
@@ -135,7 +135,7 @@ export const useProblemsToSolve = () => {
   }
 
 
-  const startLoadingProblemSolved = async(problem: CurrentProblemShowing) => {
+  const startLoadingProblemSolved = async(problem: CurrentProblemSolvedShowing) => {
     dispatch( onLoadProblemSolved(problem) );
   }
 
@@ -153,6 +153,7 @@ export const useProblemsToSolve = () => {
 
   return {
     currentProblem: problem,
+    currentProblemSolved: problemSolved,
     problemsSolved,
     problemsGlobal,
     problemContents,

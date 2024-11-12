@@ -36,6 +36,9 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
         method_name: problemContents.find((x) => x.unit_id === id && x.methods.some(m => m.id === method_id))?.methods.find(x => x.id === method_id)?.method_name || "",
         options: problemGlobal.problems.find(x => x.type === type)?.options || [],
         unit_name: units.find(x => x.id === id)?.name || "",
+        problem_answer: problemSolved?.problem_answer || "",
+        solved_at: getDateFormatted(problemSolved?.solved_at || "") || "",
+
       });
       navigate("/problemSolved")
       return;
@@ -122,11 +125,13 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
                                         return(
                                           <tr 
                                           key={pI} 
-                                          onClick={() => handleNavigate(method.id, p.problem_type)}
-                                          className='hover:bg-blue-500 hover:text-white text-gray-800'>
+                                          onClick={() => handleNavigate(method.id, p.problem_type, )}
+                                          className={`hover:bg-blue-500 hover:text-white text-gray-800
+                                            ${ p?.problem_answer === p?.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'}
+                                          `}>
                                             <td className=' text-center'>{p.problem_type}</td>
                                             <td className=' text-center'>{p.correct_answer}</td>
-                                            <td className=' text-center'>{p.problem_type}</td>
+                                            <td className=' text-center'>{p.problem_answer}</td>
                                             <td className=' text-center'>{getDateFormatted(p.solved_at)}</td>
                                           </tr>
                                           

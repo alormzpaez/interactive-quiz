@@ -113,6 +113,22 @@ export const ProblemPage: FC<TitleProps> = ({ time, URL }) => {
           }
           
         </div>
+        <div className="w-full flex justify-center">
+          {
+            showAnswer &&
+            (
+              
+                <div className={`p-3 my-2 border rounded-md  ${
+                  
+                    currentProblem?.options[optionSelected || 0] === currentProblem?.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
+                  
+                }`}>
+                  {currentProblem?.options[optionSelected || 0] === currentProblem?.correct_answer ? 'Tu respuesta fue Correcta' : 'Tu respuesta fue Incorrecta'}
+                </div>
+            ) 
+          }
+          
+        </div>
       </div>
     </>
   );

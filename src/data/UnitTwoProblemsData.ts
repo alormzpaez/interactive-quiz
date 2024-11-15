@@ -163,28 +163,13 @@ export const UnitTwoProblemsData: MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["a1x = 1.186244674; a0 = -0.03201960743", "a1x = 1.186344674; a0 = -0.03201460743", "a1x = 1.185244674; a0 = -0.03201960743", "a1x = 1.186244674; a0 = -0.03231960743"],
+                correct_answer: "a1x = 1.186244674; a0 = -0.03201960743"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 3,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 4,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 5,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["a1 = 0.5759040458 a0 = 1.476924454", "a1 = 0.5659040458 a0 = 1.476924454", "a1 = 0.5759040458 a0 = 1.466924454", "a1 = 0.5749040458 a0 = 1.477924454"],
+                correct_answer: "a1 = 0.5759040458 a0 = 1.476924454"
             },
         ]
     },

@@ -140,10 +140,6 @@ export const UnitsContentsData: UnitsContentsDataInterface[] = [
                 id: 5,
                 method_name: "Newton – Cotes Abiertas"
             },
-            {
-                id: 6,
-                method_name: "Tablas de Constantes para las fórmulas Cerradas y Abiertas de Newton – Cotes"
-            },
         ]
     },
     {

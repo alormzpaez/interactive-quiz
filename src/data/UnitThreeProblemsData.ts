@@ -8,28 +8,13 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["7.8585", "7.758512399", "7.858512399", "7.758512399"],
+                correct_answer: "7.858512399"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 3,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 4,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 5,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["1.466100439", "1.456100439", "1.467500439", "1.465100439"],
+                correct_answer: "1.466100439"
             },
         ]
     },

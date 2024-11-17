@@ -149,38 +149,26 @@ export const UnitsContentsData: UnitsContentsDataInterface[] = [
         methods: [
             {
                 id: 1,
-                method_name: "Euler"
+                method_name: "Euler Modificado"
             },
             {
                 id: 2,
-                method_name: "Hacia Adelante"
-            },
-            {
-                id: 3,
-                method_name: "Hacia Atrás"
-            },
-            {
-                id: 4,
-                method_name: "Modificado"
-            },
-            {
-                id: 5,
                 method_name: "Runge – Kutta: 2do. orden"
             },
             {
-                id: 6,
+                id: 3,
                 method_name: "Runge – Kutta: 3er. orden"
             },
             {
-                id: 7,
+                id: 4,
                 method_name: "4to. Orden: 1/3 de Simpson "
             },
             {
-                id: 8,
+                id: 5,
                 method_name: "4to. Orden: 3/8 de Simpson "
             },
             {
-                id: 9,
+                id: 6,
                 method_name: "Orden Superior"
             },
 

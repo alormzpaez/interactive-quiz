@@ -16,6 +16,21 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
                 options: ["1.466100439", "1.456100439", "1.467500439", "1.465100439"],
                 correct_answer: "1.466100439"
             },
+            {
+                type: 3,
+                options: ["1.97779234", "1.97878234", "1.97879231", "1.97879234"],
+                correct_answer: "1.97879234"
+            },
+            {
+                type: 4,
+                options: ["0.2682414406", "0.2682414506", "0.2682441406", "0.2682415406"],
+                correct_answer: "0.2682415406"
+            },
+            {
+                type: 5,
+                options: ["0.2455593771", "0.2475693771", "0.2475593771", "0.2575593771"],
+                correct_answer: "0.2475593771"
+            },
         ]
     },
     {
@@ -24,27 +39,27 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 3,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 4,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 5,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
         ]
@@ -55,28 +70,28 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["0.7137066694", "0.7137166694", "0.7135066694", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
             {
                 type: 3,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
             {
                 type: 4,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
             {
                 type: 5,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
         ]
     },
@@ -86,27 +101,27 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 3,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 4,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 5,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
         ]
@@ -117,61 +132,30 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
             {
                 type: 3,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 4,
-                options: ["4", "5", "6", "7"],
+                options: ["4", "5", "6", "No es posible resolver por este metodo"],
                 correct_answer: "4"
             },
             {
                 type: 5,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este metodo"],
+                correct_answer: "No es posible resolver por este metodo"
             },
         ]
-    },
-    {
-        unit_id: UnitIds.U3_ID,
-        method_id: 6,
-        problems: [
-            {
-                type: 1,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 2,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 3,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 4,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-            {
-                type: 5,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4"
-            },
-        ]
-    }    
+    }
 ]
  

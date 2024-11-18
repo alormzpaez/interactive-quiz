@@ -91,9 +91,12 @@ export const useProblemsToSolve = () => {
       console.error("No se encontraron problemas para la unidad y método especificados.");
       return null;
     }
+
+    // Revolver problemas para obtener uno aleatorio
+    const shuffledProblems = getShuffledProblems(methodData.problems)
   
     // Buscar un problema no resuelto
-    for (const problem of methodData.problems) {
+    for (const problem of shuffledProblems) {
       const isSolved = problemsSolved.some(
         (solved) =>
           solved.unit_id === unitId &&
@@ -118,6 +121,14 @@ export const useProblemsToSolve = () => {
   
     // Si todos los problemas han sido resueltos, retornamos null
     return null;
+  }
+
+  const getShuffledProblems = (array: ProblemData[]): ProblemData[] => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Índice aleatorio
+      [array[i], array[j]] = [array[j], array[i]];   // Intercambia elementos
+    }
+    return array;
   }
 
   const getSolvedProblemsByUnitAndMethod = (unitId: string, methodId: number) => {

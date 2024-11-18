@@ -9,27 +9,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -40,27 +45,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -71,27 +81,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -102,27 +117,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -133,27 +153,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -164,27 +189,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -195,27 +225,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -226,27 +261,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     },
@@ -257,27 +297,32 @@ export const UnitFourProblemsData : MethodProblemsData[] = [
             {
                 type: 1,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 2,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 3,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 4,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
             {
                 type: 5,
                 options: ["4", "5", "6", "7"],
-                correct_answer: "4"
+                correct_answer: "4",
+                time: "5:00"
             },
         ]
     }

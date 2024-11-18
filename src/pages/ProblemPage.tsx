@@ -64,7 +64,7 @@ export const ProblemPage = () => {
           <h1 className="font-bold text-lg">{currentProblem?.unit_name} / {currentProblem?.method_name} / Tipo {currentProblem?.type}</h1>
           
           <Timer 
-            time={"1:00"}
+            time={currentProblem?.time ?? "1:00"}
             onComplete={handleOnComplete}
           />
           {

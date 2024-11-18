@@ -113,8 +113,8 @@ export const useProblemsToSolve = () => {
           type: problem.type,
           unit_id: unitId,
           unit_name: UnitsContentsData.find(u => u.unit_id === unitId && u.methods.some(m => m.id === methodId))?.topic || "",
-          method_name: UnitsContentsData.find(u => u.unit_id === unitId && u.methods.some(m => m.id === methodId))?.methods?.find(x => x.id === methodId)?.method_name || ""
-          
+          method_name: UnitsContentsData.find(u => u.unit_id === unitId && u.methods.some(m => m.id === methodId))?.methods?.find(x => x.id === methodId)?.method_name || "",
+          time: problem.time
         };
       }
     }

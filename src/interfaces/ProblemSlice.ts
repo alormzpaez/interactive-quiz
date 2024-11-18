@@ -7,6 +7,7 @@ export interface CurrentProblemShowing {
     correct_answer: string;
     unit_name: string;
     method_name: string;
+    time: string;
 } 
 export interface CurrentProblemSolvedShowing {
     unit_id: string;

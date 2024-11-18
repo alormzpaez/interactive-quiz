@@ -4,6 +4,7 @@ export interface ProblemData {
     type: number;
     options: string[];
     correct_answer: string;
+    time: string;
 }
 
 // Representa un método con un conjunto de problemas

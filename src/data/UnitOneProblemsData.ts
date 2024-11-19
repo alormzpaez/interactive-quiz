@@ -190,33 +190,33 @@ export const UnitOneProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4",
-                time: "5:00"
+                options: ["x = 1.210029744", "x = 1.211029744", "x = 1.210029744", "x = 1.212029744"],
+                correct_answer: "x = 1.211029744",
+                time: "20:00"
             },
             {
                 type: 2,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4",
-                time: "5:00"
+                options: ["x = -0.232824464", "x = -0.212824465", "x = -0.211824465", "x = -0.21282446"],
+                correct_answer: "x = -0.211824465",
+                time: "20:00"
             },
             {
                 type: 3,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4",
-                time: "5:00"
+                options: ["x = 1.297536476", "x = 1.287536476", "x = 1.287536476", "x = 1.307536471"],
+                correct_answer: "x = 1.297536476",
+                time: "20:00"
             },
             {
                 type: 4,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4",
-                time: "5:00"
+                options: ["x = 0.139903947", "x = -0.129103948", "x = -0.139903947", "x = 0.139903947"],
+                correct_answer: "x = -0.139903947",
+                time: "20:00"
             },
             {
                 type: 5,
-                options: ["4", "5", "6", "7"],
-                correct_answer: "4",
-                time: "5:00"
+                options: ["x = 2.3697805091", "x = 2.3307985097", "x = 2.3507805091", "x = 2.2507805091"],
+                correct_answer: "x = 2.3507805091",
+                time: "20:00"
             },
         ]
     },

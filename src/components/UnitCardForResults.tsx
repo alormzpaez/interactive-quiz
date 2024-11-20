@@ -114,7 +114,7 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
                                     <thead>
                                       <tr>
                                         <th className='text-center'>Tipo</th>
-                                        <th className='text-center'>Respuesta correcta</th>
+                                        {/* <th className='text-center'>Respuesta correcta</th> */}
                                         <th className='text-center'>Respuesta elegida</th>
                                         <th className='text-center'>Fecha de resolución</th>
                                       </tr>
@@ -127,10 +127,10 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
                                           key={pI} 
                                           onClick={() => handleNavigate(method.id, p.problem_type, )}
                                           className={`hover:bg-blue-500 hover:text-white text-gray-800
-                                            ${ p?.problem_answer === p?.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'}
+                                            ${"" /*p?.problem_answer === p?.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500' */}
                                           `}>
                                             <td className=' text-center'>{p.problem_type}</td>
-                                            <td className=' text-center'>{p.correct_answer}</td>
+                                            {/* <td className=' text-center'>{p.correct_answer}</td> */}
                                             <td className=' text-center'>{p.problem_answer}</td>
                                             <td className=' text-center'>{getDateFormatted(p.solved_at)}</td>
                                           </tr>

@@ -63,15 +63,18 @@ export const ProblemPage = () => {
         <div className="flex flex-row place-content-between w-full border rounded-md p-5 border-gray-300">
           <h1 className="font-bold text-lg">{currentProblem?.unit_name} / {currentProblem?.method_name} / Tipo {currentProblem?.type}</h1>
           
-          <Timer 
-            time={currentProblem?.time ?? "1:00"}
-            onComplete={handleOnComplete}
-          />
+          
           {
             !showAnswer && (
+              <>
+              <Timer 
+                time={currentProblem?.time ?? "1:00"}
+                onComplete={handleOnComplete}
+              />
               <button 
               onClick={() => handleCancelProblem()}
               className='p-2 bg-red-500 text-white font-bold rounded-md'>Cancelar</button>
+              </>
             )
           }
           
@@ -85,16 +88,22 @@ export const ProblemPage = () => {
           {currentProblem?.options?.map((answer, index) => (
             <div
               key={index}
-              onClick={()=> setOptionSelected(index)}
+              
+              onClick={()=> {
+                if(!showAnswer){
+                  setOptionSelected(index)
+                }
+              }}
               className={`p-3 my-2 border rounded-md cursor-pointer hover:bg-blue-500 hover:text-white ${
-                showAnswer ? (
-                  answer === currentProblem.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
+                showAnswer  && optionSelected === index ? (
+                  
+                  (answer === currentProblem.correct_answer ) ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
                 ) : optionSelected === index ? "bg-blue-500 text-white" : ""
               }`}
             >
               <span>{answer}</span>
               {
-                showAnswer &&
+                (showAnswer && optionSelected === index) &&
                 <span className="ml-2 font-bold">
                   {answer === currentProblem.correct_answer ? 'Correcta' : 'Incorrecta'}
                 </span>

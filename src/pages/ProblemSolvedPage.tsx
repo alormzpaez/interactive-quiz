@@ -57,13 +57,27 @@ export const ProblemSolvedPage = () => {
             <div
               key={index}
               className={`p-3 my-2 border rounded-md ${
-                answer === currentProblemSolved.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
+                answer === currentProblemSolved.problem_answer ? 
+                (
+                  answer === currentProblemSolved.correct_answer ? 
+                  'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
+
+                ) : ""
+                
               }`}
             >
               <span>{answer}</span>
               
                 <span className="ml-2 font-bold">
-                  {answer === currentProblemSolved.correct_answer ? 'Correcta' : 'Incorrecta'}
+                  {
+                    answer === currentProblemSolved.problem_answer ? 
+                    (
+                      answer === currentProblemSolved.correct_answer ? 
+                      'Correcta' : 'Incorrecta'
+    
+                    ) : ""
+                  }
+                  
                 </span>
               
             </div>

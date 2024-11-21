@@ -43,15 +43,12 @@ ipcMain.handle('loadCurrentProblemsFinished', async () => {
 
 // Función para leer imagen de problema
 ipcMain.handle('loadImageForProblem', async (event: IpcMainInvokeEvent, data: DataToGetProblemImage) => {
-    
-        
     try {
-        const filePath = path.join(app.getAppPath(),"src", 'assets', "problems", data.unit_id, "" + data.method_id, "" + data.problem_type + ".png");
-        //console.log("url para imagen y problema: ", filePath);
-        
-        return "file://" + filePath;
+        const filePath = path.join(process.resourcesPath, 'assets', 'problems', data.unit_id, `${data.method_id}`, `${data.problem_type}.png`);
+        console.log("Path generado:", filePath);
+        return `file://${filePath}`;
     } catch (error) {
-        console.error('Error al leer la imagen desde node:', error);
+        console.error('Error al cargar la imagen:', error);
         return null;
     }
 });

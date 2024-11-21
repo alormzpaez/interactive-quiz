@@ -1,5 +1,5 @@
 
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, MemoryRouter } from 'react-router-dom'
 import './App.css'
 import { AppRouter } from './router/AppRouter'
 
@@ -7,9 +7,9 @@ function App() {
   
 
   return (
-    <BrowserRouter>
+    <MemoryRouter>
       <AppRouter/>
-    </BrowserRouter>
+    </MemoryRouter>
   )
 }
 

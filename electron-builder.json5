@@ -9,7 +9,15 @@
   },
   "files": [
     "dist",
-    "dist-electron"
+    "dist-electron",
+    "src/assets/**/*"
+  ],
+  "extraResources": [
+      {
+        "from": "src/assets", // Carpeta local de assets
+        "to": "assets",          // Carpeta en el paquete final
+        "filter": ["**/*"]       // Incluye todos los archivos
+      }
   ],
   "mac": {
     "target": [

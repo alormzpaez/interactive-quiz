@@ -44,7 +44,19 @@ ipcMain.handle('loadCurrentProblemsFinished', async () => {
 // Función para leer imagen de problema
 ipcMain.handle('loadImageForProblem', async (event: IpcMainInvokeEvent, data: DataToGetProblemImage) => {
     try {
-        const filePath = path.join(process.resourcesPath, 'assets', 'problems', data.unit_id, `${data.method_id}`, `${data.problem_type}.png`);
+        let filePath: string;
+
+        // Verificar si estamos en modo de desarrollo o producción
+        console.log("env:", process.env.NODE_ENV);
+        
+        if (process.env.NODE_ENV !== 'development') {
+            // En producción, usamos process.resourcesPath para obtener la ruta correcta dentro del paquete .asar
+            filePath = path.join(process.resourcesPath, 'assets', 'problems', data.unit_id, `${data.method_id}`, `${data.problem_type}.png`);
+        } else {
+            // En desarrollo, usamos una ruta relativa a los recursos locales
+            filePath = path.join(app.getAppPath(), "src", "assets", "problems", data.unit_id, "" + data.method_id, "" + data.problem_type + ".png");
+        }
+
         console.log("Path generado:", filePath);
         return `file://${filePath}`;
     } catch (error) {

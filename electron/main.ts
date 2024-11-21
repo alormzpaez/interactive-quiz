@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
@@ -40,7 +40,18 @@ function createWindow() {
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
   })
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
+  win.maximize();
+  
+   // Quitar el menú en todas las plataformas
+  if (process.platform !== 'darwin') {
+    Menu.setApplicationMenu(null);  // Elimina el menú en Windows/Linux
+  }
+   // Para macOS, personaliza o elimina el menú por completo si es necesario
+   if (process.platform === 'darwin') {
+    const appMenu = Menu.buildFromTemplate([]);
+    Menu.setApplicationMenu(appMenu);
+  }
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL)

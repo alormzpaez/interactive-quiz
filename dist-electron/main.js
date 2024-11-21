@@ -1,97 +1,70 @@
-import { ipcMain, app, BrowserWindow, Menu } from "electron";
-import { createRequire } from "node:module";
-import { fileURLToPath } from "node:url";
-import path$1 from "node:path";
-import * as fs from "fs";
-import * as path from "path";
-ipcMain.handle("get-solved-problems", (event, msg) => {
-  return process.versions.node;
-});
-ipcMain.handle("saveData", async (event, data) => {
-  const filePath = path.join(app.getPath("userData"), "data.json");
+import { ipcMain as l, app as t, BrowserWindow as d, Menu as c } from "electron";
+import { createRequire as h } from "node:module";
+import { fileURLToPath as _ } from "node:url";
+import n from "node:path";
+import * as u from "fs";
+import * as i from "path";
+l.handle("get-solved-problems", (r, e) => process.versions.node);
+l.handle("saveData", async (r, e) => {
+  const s = i.join(t.getPath("userData"), "data.json");
   try {
-    await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
-    console.log("saving");
-    return { success: true };
-  } catch (error) {
-    console.error("Error al guardar los datos:", error);
-    return { success: false, error: error == null ? void 0 : error.message };
+    return await u.promises.writeFile(s, JSON.stringify(e), "utf-8"), console.log("saving"), { success: !0 };
+  } catch (a) {
+    return console.error("Error al guardar los datos:", a), { success: !1, error: a == null ? void 0 : a.message };
   }
 });
-ipcMain.handle("loadCurrentProblemsFinished", async () => {
-  const filePath = path.join(app.getPath("userData"), "data.json");
+l.handle("loadCurrentProblemsFinished", async () => {
+  const r = i.join(t.getPath("userData"), "data.json");
   try {
-    const data = await fs.promises.readFile(filePath, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error al leer los datos:", error);
-    return null;
+    const e = await u.promises.readFile(r, "utf-8");
+    return JSON.parse(e);
+  } catch (e) {
+    return console.error("Error al leer los datos:", e), null;
   }
 });
-ipcMain.handle("loadImageForProblem", async (event, data) => {
+l.handle("loadImageForProblem", async (r, e) => {
   try {
-    let filePath;
-    console.log("env:", process.env.NODE_ENV);
-    if (process.env.NODE_ENV !== "development") {
-      filePath = path.join(process.resourcesPath, "assets", "problems", data.unit_id, `${data.method_id}`, `${data.problem_type}.png`);
-    } else {
-      filePath = path.join(app.getAppPath(), "src", "assets", "problems", data.unit_id, "" + data.method_id, "" + data.problem_type + ".png");
-    }
-    console.log("Path generado:", filePath);
-    return `file://${filePath}`;
-  } catch (error) {
-    console.error("Error al cargar la imagen:", error);
-    return null;
+    let s;
+    return console.log("env:", process.env.NODE_ENV), process.env.NODE_ENV !== "development" ? s = i.join(process.resourcesPath, "assets", "problems", e.unit_id, `${e.method_id}`, `${e.problem_type}.png`) : s = i.join(t.getAppPath(), "src", "assets", "problems", e.unit_id, "" + e.method_id, "" + e.problem_type + ".png"), console.log("Path generado:", s), `file://${s}`;
+  } catch (s) {
+    return console.error("Error al cargar la imagen:", s), null;
   }
 });
-createRequire(import.meta.url);
-const __dirname = path$1.dirname(fileURLToPath(import.meta.url));
-process.env.APP_ROOT = path$1.join(__dirname, "..");
-const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
-const MAIN_DIST = path$1.join(process.env.APP_ROOT, "dist-electron");
-const RENDERER_DIST = path$1.join(process.env.APP_ROOT, "dist");
-process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL ? path$1.join(process.env.APP_ROOT, "public") : RENDERER_DIST;
-let win;
-function createWindow() {
-  win = new BrowserWindow({
-    icon: path$1.join(process.env.VITE_PUBLIC, "electron-vite.svg"),
+h(import.meta.url);
+const p = n.dirname(_(import.meta.url));
+process.env.APP_ROOT = n.join(p, "..");
+const m = process.env.VITE_DEV_SERVER_URL, R = n.join(process.env.APP_ROOT, "dist-electron"), g = n.join(process.env.APP_ROOT, "dist");
+process.env.VITE_PUBLIC = m ? n.join(process.env.APP_ROOT, "public") : g;
+let o;
+function f() {
+  if (o = new d({
+    icon: n.join(process.env.VITE_PUBLIC, "electron-vite.svg"),
     webPreferences: {
-      preload: path$1.join(__dirname, "preload.mjs"),
-      webSecurity: false
+      preload: n.join(p, "preload.mjs"),
+      webSecurity: !1
     }
-  });
-  win.webContents.on("did-finish-load", () => {
-    win == null ? void 0 : win.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
-  });
-  win.maximize();
-  if (process.platform !== "darwin") {
-    Menu.setApplicationMenu(null);
+  }), o.webContents.on("did-finish-load", () => {
+    o == null || o.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
+  }), o.maximize(), process.platform !== "darwin" && c.setApplicationMenu(null), process.platform === "darwin") {
+    const r = c.buildFromTemplate([]);
+    c.setApplicationMenu(r);
   }
-  if (process.platform === "darwin") {
-    const appMenu = Menu.buildFromTemplate([]);
-    Menu.setApplicationMenu(appMenu);
-  }
-  if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL);
-  } else {
-    const startURL = path$1.join(__dirname, "../dist/index.html");
-    win.loadFile(startURL);
+  if (m)
+    o.loadURL(m);
+  else {
+    const r = n.join(p, "../dist/index.html");
+    o.loadFile(r);
   }
 }
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-    win = null;
-  }
+t.on("window-all-closed", () => {
+  process.platform !== "darwin" && (t.quit(), o = null);
 });
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+t.on("activate", () => {
+  d.getAllWindows().length === 0 && f();
 });
-app.whenReady().then(createWindow);
+t.whenReady().then(f);
 export {
-  MAIN_DIST,
-  RENDERER_DIST,
-  VITE_DEV_SERVER_URL
+  R as MAIN_DIST,
+  g as RENDERER_DIST,
+  m as VITE_DEV_SERVER_URL
 };

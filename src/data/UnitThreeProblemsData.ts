@@ -44,31 +44,31 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["0.7137119241", "0.7137119251", "0.7137119231", "No es posible resolver por este metodo"],
+                options: ["0.7137119241", "0.7137119251", "0.7137119231", "No es posible resolver por este método"],
                 correct_answer: "0.7137119251",
                 time: "5:00"
             },
             {
                 type: 2,
-                options: ["1.458326792", "1.458326791", "1.458326793", "No es posible resolver por este metodo"],
+                options: ["1.458326792", "1.458326791", "1.458326793", "No es posible resolver por este método"],
                 correct_answer: "1.458326791",
                 time: "5:00"
             },
             {
                 type: 3,
-                options: ["1.4580889", "1.4580888", "1.4580879", "No es posible resolver por este metodo"],
+                options: ["1.4580889", "1.4580888", "1.4580879", "No es posible resolver por este método"],
                 correct_answer: "1.4580889",
                 time: "5:00"
             },
             {
                 type: 4,
-                options: ["0.2106501617", "0.2106501618", "0.2106501619", "No es posible resolver por este metodo"],
+                options: ["0.2106501617", "0.2106501618", "0.2106501619", "No es posible resolver por este método"],
                 correct_answer: "0.2106501619",
                 time: "5:00"
             },
             {
                 type: 5,
-                options: ["0.2107967777", "0.2107967778", "0.2107967779", "No es posible resolver por este metodo"],
+                options: ["0.2107967777", "0.2107967778", "0.2107967779", "No es posible resolver por este método"],
                 correct_answer: "0.2107967778",
                 time: "5:00"
             },
@@ -80,32 +80,32 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["0.7137066694", "0.7137166694", "0.7135066694", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["0.7137066694", "0.7137166694", "0.7135066694", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "20:00"
             },
             {
                 type: 2,
-                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "20:00"
             },
             {
                 type: 3,
-                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "20:00"
             },
             {
                 type: 4,
-                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "20:00"
             },
             {
                 type: 5,
-                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "20:00"
             },
         ]
@@ -116,31 +116,31 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["2.564314612", "2.564314613", "2.564314614", "No es posible resolver por este metodo"],
+                options: ["2.564314612", "2.564314613", "2.564314614", "No es posible resolver por este método"],
                 correct_answer: "4",
                 time: "5:00"
             },
             {
                 type: 2,
-                options: ["5.243326317", "1.45804652", "1.45426317", "No es posible resolver por este metodo"],
+                options: ["5.243326317", "1.45804652", "1.45426317", "No es posible resolver por este método"],
                 correct_answer: "5.243326317",
                 time: "5:00"
             },
             {
                 type: 3,
-                options: ["1.458046561", "1.458046562", "1.458046563", "No es posible resolver por este metodo"],
+                options: ["1.458046561", "1.458046562", "1.458046563", "No es posible resolver por este método"],
                 correct_answer: "1.458046562",
                 time: "5:00"
             },
             {
                 type: 4,
-                options: ["0.211562737", "0.211562738", "0.211562739", "No es posible resolver por este metodo"],
+                options: ["0.211562737", "0.211562738", "0.211562739", "No es posible resolver por este método"],
                 correct_answer: "0.211562739",
                 time: "5:00"
             },
             {
                 type: 5,
-                options: ["0.7163719863", "0.7163719864", "0.7163719865", "No es posible resolver por este metodo"],
+                options: ["0.7163719863", "0.7163719864", "0.7163719865", "No es posible resolver por este método"],
                 correct_answer: "4",
                 time: "5:00"
             },
@@ -152,32 +152,32 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["0.7337576208", "0.7237576208", "0.7137576208", "No es posible resolver por este metodo"],
+                options: ["0.7337576208", "0.7237576208", "0.7137576208", "No es posible resolver por este método"],
                 correct_answer: "0.7137576208",
                 time: "30:00"
             },
             {
                 type: 2,
-                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["1.4598073416", "1.4597073416", "1.4593073416", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "30:00"
             },
             {
                 type: 3,
-                options: ["1.458128374", "1.458128347", "1.458128367", "No es posible resolver por este metodo"],
+                options: ["1.458128374", "1.458128347", "1.458128367", "No es posible resolver por este método"],
                 correct_answer: "1.458128347",
                 time: "30:00"
             },
             {
                 type: 4,
-                options: ["0.2091886997", "0.2091886998", "0.2091886996", "No es posible resolver por este metodo"],
+                options: ["0.2091886997", "0.2091886998", "0.2091886996", "No es posible resolver por este método"],
                 correct_answer: "0.2091886998",
                 time: "30:00"
             },
             {
                 type: 5,
-                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este metodo"],
-                correct_answer: "No es posible resolver por este metodo",
+                options: ["0.2107993762", "0.2117993762", "0.2127993762", "No es posible resolver por este método"],
+                correct_answer: "No es posible resolver por este método",
                 time: "30:00"
             },
         ]

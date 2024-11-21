@@ -27,7 +27,7 @@ export const ProblemPage = () => {
   }
   const handleSubmitProblem = async() => {
     if(optionSelected === undefined) {
-      alert("Por favor seleccione una opcion");
+      alert("Por favor seleccione una opción");
       return;
     }
     // TODO: Save problem solved and update state
@@ -48,7 +48,7 @@ export const ProblemPage = () => {
   }
 
   const handleOnComplete = () => {
-    alert("Fin del tiempo, Practica más =D")
+    alert("Fin del tiempo, practica más.")
     navigate("/");
   }
 

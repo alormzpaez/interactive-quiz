@@ -23,7 +23,7 @@ export const Stats = () => {
           <Header/>
         </div>
         <div className="w-10/12 bg-red-00 flex flex-row items-center justify-around my-2">
-            <h1 className="font-bold text-4xl text-gray-600">Estadisticas</h1>
+            <h1 className="font-bold text-4xl text-gray-600">Estadísticas</h1>
             <button 
             onClick={() => navigate("/")}
             className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap">  <FaArrowLeft/> Volver</button>

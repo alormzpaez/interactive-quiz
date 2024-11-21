@@ -25,7 +25,7 @@ export const UnitsPage = () => {
                 navigate("/stats")
                 //resetProblemsSolved()
               }}
-              className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap"> <FaChartLine/> Estadisticas</button>
+              className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap"> <FaChartLine/> Estadísticas</button>
               <button 
               onClick={() => {
                 navigate("/owners")

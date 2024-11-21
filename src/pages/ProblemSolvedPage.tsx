@@ -39,7 +39,7 @@ export const ProblemSolvedPage = () => {
         <div className="flex flex-row place-content-between w-full border rounded-md p-5 border-gray-300">
           <h1 className="font-bold text-lg">{currentProblemSolved?.unit_name} / {currentProblemSolved?.method_name} / Tipo {currentProblemSolved?.type}</h1>
           <h2>
-            Problema resuelto el: <span className="font-bold text-lg">{currentProblemSolved?.solved_at}</span>
+            Problema resuelto el <span className="font-bold text-lg">{currentProblemSolved?.solved_at}</span>
           </h2>
           
           <button 
@@ -111,7 +111,7 @@ export const ProblemSolvedPage = () => {
                     currentProblemSolved?.problem_answer === currentProblemSolved?.correct_answer ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'
                   
                 }`}>
-                  {currentProblemSolved?.problem_answer === currentProblemSolved?.correct_answer ? 'Tu respuesta fue Correcta' : 'Tu respuesta fue Incorrecta'}
+                  {currentProblemSolved?.problem_answer === currentProblemSolved?.correct_answer ? 'Tu respuesta fue Correcta' : 'Tu respuesta fue incorrecta'}
                 </div>
            
           

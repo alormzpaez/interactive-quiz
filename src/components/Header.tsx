@@ -14,8 +14,8 @@ export const Header = () => {
             </div>
         </div>
         <div className="w-full text-center">
-          <h1 className='font-bold text-xl'>Metodos Numericos</h1>
-          <h1>Catedratica: ORALIA ZAMORA PEQUENO</h1>
+          <h1 className='font-bold text-xl'>Métodos Numéricos</h1>
+          <h1>Catedrática: ORALIA ZAMORA PEQUEÑO</h1>
           <h1>N4,4 MN OR 003 A2024</h1>
         </div>
     </div>

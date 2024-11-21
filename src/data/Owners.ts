@@ -19,19 +19,19 @@ export const owners = [
         carrer: "ITS"
     },
     {
-        name: "Aldair Alejandro Beltrán Melendez ",
+        name: "Aldair Alejandro Beltrán Meléndez ",
         id: 1802548 ,
         email: "alejandro.beltranmlndz@uanl.edu.mx",
         carrer: "ITS"
     },
     {
-        name: "Brandon Yahir Escobedo Rodriguez ",
+        name: "Brandon Yahir Escobedo Rodríguez ",
         id: 1998697 ,
         email: "brandon.escobedordr@uanl.edu.mx",
         carrer: "ITS"
     },
     {
-        name: "Adolfo Ibraham Sierra Hernandez  ",
+        name: "Adolfo Ibraham Sierra Hernández  ",
         id: 1972848 ,
         email: "adolph.sierra@gmail.com",
         carrer: "ITS"

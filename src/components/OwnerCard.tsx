@@ -15,7 +15,7 @@ export const OwnerCard: FC<Owner> = ({ carrer,id,name,email }) => {
             
         </div>
         <div className="w-full font-bold">
-            Matricula: {id}
+        Matrícula: {id}
         </div>
         <div className="w-full">
           <h3 className='text-lg '>Carrera: {carrer}</h3>

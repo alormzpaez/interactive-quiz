@@ -6,12 +6,14 @@ import { Provider } from "react-redux"
 import { store } from "../store"
 import { ProblemSolvedPage } from "../pages/ProblemSolvedPage"
 import { OwnersPage } from '../pages/OwnersPage'
+import { LoginPage } from '../pages/LoginPage'
 
 export const AppRouter = () => {
   return (
-    <Provider store={store}>
+    <Provider store ={store}>
       <Routes>
-          <Route path="/" element={<UnitsPage/>}/>
+          <Route path='/' element={<LoginPage />} />
+          <Route path="/units" element={<UnitsPage/>}/>
           <Route path="/owners" element={<OwnersPage/>}/>
           <Route path="/problem" element={
               <ProblemPage />

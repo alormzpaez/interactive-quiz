@@ -4,16 +4,21 @@ import { Header, UnitCard } from '../components';
 import { useProblemsToSolve, useUnits } from '../hooks';
 import { FaChartLine } from 'react-icons/fa';
 import { FaPeopleGroup } from 'react-icons/fa6';
+import { useUser } from '../hooks/useUser';
 
 export const UnitsPage = () => {
   const navigate = useNavigate();
   const { units } = useUnits();
   //const {resetProblemsSolved} = useProblemsToSolve()
+  const {user} = useUser()
 
   return (
     <div className="w-full min-h-screen bg-blue-00 flex flex-col items-center">
         <div className="w-5/6">
           <Header/>
+        </div>
+        <div className="w-5/6">
+        <h1 className="font-bold text-4xl text-gray-600">Bienvenido: {user.id}</h1>
         </div>
         <div className="w-full flex flex-row items-center justify-around my-4">
             

@@ -132,6 +132,12 @@ export const UnitFourProblemsData: MethodProblemsData[] = [
                 correct_answer: "3.0625",
                 time: "13:00"
             },
+            {
+                type: 2,
+                options: ["-5.0625", "5.0625", "6.0625", "5.09481"],
+                correct_answer: "5.0625",
+                time: "13:00"
+            },
            
         ]
     },

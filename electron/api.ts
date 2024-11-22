@@ -12,10 +12,44 @@ ipcMain.handle("get-solved-problems",(event: IpcMainInvokeEvent, msg: string): s
     return process.versions.node;
 });
 
-// Función para guardar datos en un archivo JSON
-ipcMain.handle('saveData', async (event: IpcMainInvokeEvent, data) => {
-    const filePath = path.join(app.getPath('userData'), 'data.json'); // Directorio adecuado para la aplicación
+//Guardar usuarios
+ipcMain.handle('getUsers', async (event: IpcMainInvokeEvent) => {
+    const filePath = path.join(app.getPath('userData'), 'users.json'); // Directorio adecuado para la aplicación
     try {
+      const data = await fs.promises.readFile(filePath, 'utf-8');
+        //console.log("path: ", filePath);
+        
+        return JSON.parse(data);
+    } catch (error: any) {
+      console.error('Error al obtener los usuarios:', error);
+      return [];
+    }
+});
+
+ipcMain.handle('saveUsers', async (event: IpcMainInvokeEvent, data) => {
+    const filePath = path.join(app.getPath('userData'), 'users.json'); // Directorio adecuado para la aplicación
+    try {
+      // Guardamos los datos como JSON
+      await fs.promises.writeFile(filePath, JSON.stringify(data), 'utf-8');
+      console.log("saving");
+      
+      return { success: true };
+    } catch (error: any) {
+      console.error('Error al guardar los usuarios:', error);
+      return { success: false, error: error?.message };
+    }
+});
+
+// Función para guardar datos en un archivo JSON
+ipcMain.handle('saveData', async (event: IpcMainInvokeEvent, data, id) => {
+    const filePath = path.join(app.getPath('userData'),"users",id, 'data.json'); // Directorio adecuado para la aplicación
+    try {
+        // Verificar si la carpeta del usuario existe
+        if (!fs.existsSync(path.dirname(filePath))) {
+            fs.mkdirSync(path.dirname(filePath), { recursive: true });
+        }
+        
+ 
       // Guardamos los datos como JSON
       await fs.promises.writeFile(filePath, JSON.stringify(data), 'utf-8');
       console.log("saving");
@@ -28,9 +62,23 @@ ipcMain.handle('saveData', async (event: IpcMainInvokeEvent, data) => {
 });
   
 // Función para leer datos de un archivo JSON
-ipcMain.handle('loadCurrentProblemsFinished', async () => {
-    const filePath = path.join(app.getPath('userData'), 'data.json');
+ipcMain.handle('loadCurrentProblemsFinished', async (event: IpcMainInvokeEvent, id: string) => {
+    
     try {
+        const filePath = path.join(app.getPath('userData'), "users", id, 'data.json');
+
+        // Crear directorio si no existe
+        if (!fs.existsSync(path.dirname(filePath))) {
+            fs.mkdirSync(path.dirname(filePath), { recursive: true });
+        }
+
+        // Validar existencia del archivo
+        if (!fs.existsSync(filePath)) {
+            // Crear archivo con contenido inicial
+            
+            await fs.promises.writeFile(filePath, [], 'utf-8');
+        }
+        
         const data = await fs.promises.readFile(filePath, 'utf-8');
         //console.log("path: ", filePath);
         

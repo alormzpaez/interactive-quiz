@@ -8,8 +8,8 @@ export interface UserData {
 }
 
 const initialState: UserData = {
-    id: "",
-    password: ""
+    id: null,
+    password:null
 }
 
 export const userSlice = createSlice({

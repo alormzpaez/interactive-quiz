@@ -7,9 +7,9 @@ import { OwnerCard } from '../components/OwnerCard';
 import { useUser } from '../hooks/useUser';
 import { useState } from 'react';
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const navigate = useNavigate();
-  const { startLoadingCloseSesssion, startLoadingUser, user } = useUser()
+  const { startLoadingCloseSesssion, startCreatingUser, user } = useUser()
   const [userId,setUserId] = useState("")
   const [userPass,setUserPass] = useState("")
   return (
@@ -18,36 +18,38 @@ export const LoginPage = () => {
           <Header/>
         </div>
         <div className="w-full flex flex-row items-center justify-around my-4">
-
+        
         </div>
         <div className="w-5/6 flex flex-col gap-2 bg-blue-00 items-center justify-center p-2">
-            <h1 className='font-bold text-2xl'>Login</h1>
+            <h1 className='font-bold text-2xl'>Registro</h1>
             
 
-            <input className='border-gray-600 border-2  w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="" onChange={(e) => setUserId(e.target.value)} placeholder='Introduce matrícula...'/>
-            <input className='border-gray-600 border-2 w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="password"  onChange={(e) => setUserPass(e.target.value)} placeholder='Introduce contraseña...'/>
+            <input className='border-gray-600 border-2  w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="text" name="" id="" onChange={(e) => setUserId(e.target.value)} placeholder='Introduce matrícula...'/>
+            <input className='border-gray-600 border-2 w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="password" name="" id=""  onChange={(e) => setUserPass(e.target.value)} placeholder='Introduce contraseña...'/>
             <button 
                onClick={() => {
                     if(userId?.trim() === "" && userPass?.trim() === ""){
                       alert("Los campos deben ser válidos")
                       return;
                     }
-                    startLoadingUser({
+
+                    startCreatingUser({
                       id: userId?.trim(),
                       password: userPass?.trim()
                     })
-                    // alert("Entrarase...")
+                    navigate("/")
+
                 }}
               className='w-4/6 rounded-md border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3'>
-                Ingresar
+                Crear
               </button>
               <button 
                onClick={() => {
-                    navigate("/register")
+                    navigate("/")
                     
                 }}
               className='w-4/6 rounded-md border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-3'>
-                Crear cuenta
+                Volver
               </button>
             
             

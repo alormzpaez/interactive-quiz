@@ -7,9 +7,33 @@ import * as path from "path";
 ipcMain.handle("get-solved-problems", (event, msg) => {
   return process.versions.node;
 });
-ipcMain.handle("saveData", async (event, data) => {
-  const filePath = path.join(app.getPath("userData"), "data.json");
+ipcMain.handle("getUsers", async (event) => {
+  const filePath = path.join(app.getPath("userData"), "users.json");
   try {
+    const data = await fs.promises.readFile(filePath, "utf-8");
+    return JSON.parse(data);
+  } catch (error) {
+    console.error("Error al obtener los usuarios:", error);
+    return [];
+  }
+});
+ipcMain.handle("saveUsers", async (event, data) => {
+  const filePath = path.join(app.getPath("userData"), "users.json");
+  try {
+    await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
+    console.log("saving");
+    return { success: true };
+  } catch (error) {
+    console.error("Error al guardar los usuarios:", error);
+    return { success: false, error: error == null ? void 0 : error.message };
+  }
+});
+ipcMain.handle("saveData", async (event, data, id) => {
+  const filePath = path.join(app.getPath("userData"), "users", id, "data.json");
+  try {
+    if (!fs.existsSync(path.dirname(filePath))) {
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    }
     await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
     console.log("saving");
     return { success: true };
@@ -18,9 +42,15 @@ ipcMain.handle("saveData", async (event, data) => {
     return { success: false, error: error == null ? void 0 : error.message };
   }
 });
-ipcMain.handle("loadCurrentProblemsFinished", async () => {
-  const filePath = path.join(app.getPath("userData"), "data.json");
+ipcMain.handle("loadCurrentProblemsFinished", async (event, id) => {
   try {
+    const filePath = path.join(app.getPath("userData"), "users", id, "data.json");
+    if (!fs.existsSync(path.dirname(filePath))) {
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    }
+    if (!fs.existsSync(filePath)) {
+      await fs.promises.writeFile(filePath, [], "utf-8");
+    }
     const data = await fs.promises.readFile(filePath, "utf-8");
     return JSON.parse(data);
   } catch (error) {

@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Header, UnitCard } from '../components';
 import { useProblemsToSolve, useUnits } from '../hooks';
-import { FaChartLine } from 'react-icons/fa';
+import { FaChartLine, FaDoorClosed } from 'react-icons/fa';
 import { FaPeopleGroup } from 'react-icons/fa6';
 import { useUser } from '../hooks/useUser';
 
@@ -10,7 +10,7 @@ export const UnitsPage = () => {
   const navigate = useNavigate();
   const { units } = useUnits();
   //const {resetProblemsSolved} = useProblemsToSolve()
-  const {user} = useUser()
+  const {user, startLoadingCloseSesssion} = useUser()
 
   return (
     <div className="w-full min-h-screen bg-blue-00 flex flex-col items-center">
@@ -37,6 +37,12 @@ export const UnitsPage = () => {
                 //resetProblemsSolved()
               }}
               className="p-2 rounded-sm bg-white border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap"> <FaPeopleGroup/> Nosotros</button>
+
+<button 
+              onClick={() => {
+                startLoadingCloseSesssion()
+              }}
+              className="p-2 rounded-sm bg-white border-2 border-red-500 hover:bg-red-500 hover:text-white text-red-500 font-bold flex flex-row items-center justify-center gap-2 flex-nowrap"> <FaDoorClosed/> Salir</button>
           
             </div>
         </div>

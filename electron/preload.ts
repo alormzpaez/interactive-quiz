@@ -1,5 +1,6 @@
 import { ipcRenderer, contextBridge } from 'electron'
 import { DataToGetProblemImage, ProblemSolvedInLocalDB } from '../src/interfaces'
+import { UserData } from '../src/store/Problem/userSlice'
 
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
@@ -26,8 +27,12 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 
 export const backend = {
   nodeVersion: async (msg: string): Promise<string> => await ipcRenderer.invoke("get-solved-problems", msg),
-  saveData: async (data: any): Promise<{ success: boolean, error: string }> => await ipcRenderer.invoke("saveData", data),
-  loadData: async (): Promise<ProblemSolvedInLocalDB[] | null> => await ipcRenderer.invoke("loadCurrentProblemsFinished"),
+  //
+  getUsers: async (): Promise<UserData[]> => await ipcRenderer.invoke("getUsers"),
+  saveUsers: async (data: any): Promise<{ success: boolean, error: string }> => await ipcRenderer.invoke("saveUsers", data),
+  //
+  saveData: async (data: any, id: string): Promise<{ success: boolean, error: string }> => await ipcRenderer.invoke("saveData", data, id),
+  loadData: async (id: string): Promise<ProblemSolvedInLocalDB[] | null> => await ipcRenderer.invoke("loadCurrentProblemsFinished", id),
   loadImageForProblem: async (data: DataToGetProblemImage): Promise<string | null> => await ipcRenderer.invoke("loadImageForProblem",data),
 };
 

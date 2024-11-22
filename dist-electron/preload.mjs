@@ -22,8 +22,12 @@ electron.contextBridge.exposeInMainWorld("ipcRenderer", {
 });
 const backend = {
   nodeVersion: async (msg) => await electron.ipcRenderer.invoke("get-solved-problems", msg),
-  saveData: async (data) => await electron.ipcRenderer.invoke("saveData", data),
-  loadData: async () => await electron.ipcRenderer.invoke("loadCurrentProblemsFinished"),
+  //
+  getUsers: async () => await electron.ipcRenderer.invoke("getUsers"),
+  saveUsers: async (data) => await electron.ipcRenderer.invoke("saveUsers", data),
+  //
+  saveData: async (data, id) => await electron.ipcRenderer.invoke("saveData", data, id),
+  loadData: async (id) => await electron.ipcRenderer.invoke("loadCurrentProblemsFinished", id),
   loadImageForProblem: async (data) => await electron.ipcRenderer.invoke("loadImageForProblem", data)
 };
 electron.contextBridge.exposeInMainWorld("backend", backend);

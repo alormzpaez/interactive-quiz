@@ -37,7 +37,7 @@ export const ProblemSolvedPage = () => {
     <>
       <div className="w-screen p-5">
         <div className="flex flex-row place-content-between w-full border rounded-md p-5 border-gray-300">
-          <h1 className="font-bold text-lg">{currentProblemSolved?.unit_name} / {currentProblemSolved?.method_name} / Tipo {currentProblemSolved?.type}</h1>
+          <h1 className="font-bold text-lg">{currentProblemSolved?.unit_name} / {currentProblemSolved?.method_name} / Problema {currentProblemSolved?.type}</h1>
           <h2>
             Problema resuelto el <span className="font-bold text-lg">{currentProblemSolved?.solved_at}</span>
           </h2>

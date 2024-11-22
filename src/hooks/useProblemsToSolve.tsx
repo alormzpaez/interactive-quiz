@@ -3,6 +3,7 @@ import { DataToGetProblemImage, MethodProblemsData, ProblemData, ProblemSolvedIn
 import { globalUnitProblems, unitData, UnitsContentsData } from "../data";
 import { onLoadProblem, onLoadProblemSolved, useAppDispatch, useAppSelector } from "../store";
 import { CurrentProblemShowing, CurrentProblemSolvedShowing } from "../interfaces/ProblemSlice";
+import { useUser } from "./useUser";
 
 
 export const useProblemsToSolve = () => {
@@ -11,9 +12,10 @@ export const useProblemsToSolve = () => {
     const [problemContents, setproblemContents] = useState<UnitsContentsDataInterface[]>([]);
     const dispatch = useAppDispatch();
     const { problem, problemSolved } = useAppSelector(store => store.problem)
+    const { user } = useUser()
 
     const chargeProblemsSolved = async() => {
-      const problemsSolved = await backend.loadData();
+      const problemsSolved = await backend.loadData(user.id ?? "");
       setProblemsSolved(problemsSolved || []);
 
       const problemsTotal = [...globalUnitProblems];
@@ -36,7 +38,7 @@ export const useProblemsToSolve = () => {
     const saveNewProblemSolved = async(problem: ProblemSolvedInLocalDB) => {
       const arr = [...problemsSolved, problem];
       setProblemsSolved(arr);
-      const res = await backend.saveData(arr);
+      const res = await backend.saveData(arr, user.id ?? "");
       if(res.success){
         console.log("Problema guardado correctamente")
         return true;
@@ -47,7 +49,7 @@ export const useProblemsToSolve = () => {
     }
     const resetProblemsSolved = async() => {
       setProblemsSolved([]);
-      const res = await backend.saveData([]);
+      const res = await backend.saveData([], user.id ?? "");
       if(res.success){
         console.log("Problema guardado correctamente")
         return true;

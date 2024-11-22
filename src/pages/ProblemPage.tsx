@@ -61,7 +61,7 @@ export const ProblemPage = () => {
     <>
       <div className="w-screen p-5">
         <div className="flex flex-row place-content-between w-full border rounded-md p-5 border-gray-300">
-          <h1 className="font-bold text-lg">{currentProblem?.unit_name} / {currentProblem?.method_name} / Tipo {currentProblem?.type}</h1>
+          <h1 className="font-bold text-lg">{currentProblem?.unit_name} / {currentProblem?.method_name} / Problema {currentProblem?.type}</h1>
           
           
           {

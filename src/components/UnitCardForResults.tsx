@@ -113,7 +113,7 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
                                   <table className='w-full '>
                                     <thead>
                                       <tr>
-                                        <th className='text-center'>Tipo</th>
+                                        <th className='text-center'>Problema</th>
                                         {/* <th className='text-center'>Respuesta correcta</th> */}
                                         <th className='text-center'>Respuesta seleccionada</th>
                                         <th className='text-center'>Fecha de resolución</th>

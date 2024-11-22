@@ -24,8 +24,8 @@ export const LoginPage = () => {
             <h1 className='font-bold text-2xl'>Login</h1>
             
 
-            <input className='border-gray-600 border-2  w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="" onChange={(e) => setUserId(e.target.value)} placeholder='Introduce matrícula...'/>
-            <input className='border-gray-600 border-2 w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="password"  onChange={(e) => setUserPass(e.target.value)} placeholder='Introduce contraseña...'/>
+            <input className='border-gray-600 border-2  w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="" onChange={(e) => setUserId(e.target.value)} placeholder='Introduce Usuario'/>
+            <input className='border-gray-600 border-2 w-4/6 p-2 m-2 text-center rounded-md text-gray-700' type="password"  onChange={(e) => setUserPass(e.target.value)} placeholder='Introduce Contraseña'/>
             <button 
                onClick={() => {
                     if(userId?.trim() === "" && userPass?.trim() === ""){

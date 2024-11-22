@@ -8,7 +8,7 @@ export const UnitThreeProblemsData : MethodProblemsData[] = [
         problems: [
             {
                 type: 1,
-                options: ["7.8585", "7.758512399", "7.858512399", "7.758512399"],
+                options: ["7.8585", "7.158512399", "7.858512399", "7.758512399"],
                 correct_answer: "7.858512399",
                 time: "20:00"
             },

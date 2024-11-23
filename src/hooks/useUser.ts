@@ -5,7 +5,7 @@ import { onLoadProblem, onLoadProblemSolved, useAppDispatch, useAppSelector } fr
 import { CurrentProblemShowing, CurrentProblemSolvedShowing } from "../interfaces/ProblemSlice";
 import { onCloseSession, onLoadUser, UserData } from "../store/Problem/userSlice";
 
-
+import Swal from 'sweetalert2'
 export const useUser = () => {
     
     const dispatch = useAppDispatch();
@@ -22,8 +22,15 @@ export const useUser = () => {
             dispatch( onLoadUser(currentUser) )
             return;
         }
-        alert("Usuario no existe")
-    }
+   
+        Swal.fire({
+          title: 'Error!',
+          text: 'No existe el usuario',
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+        
+      }
 
     const startCreatingUser = async(user: UserData) => {
       const currentUsers = await backend.getUsers();
@@ -41,8 +48,14 @@ export const useUser = () => {
           startLoadingUser(user);
           return;
       }
-      alert("Usuario ya existe")
-    }
+   
+      Swal.fire({
+        title: 'Error!',
+        text: 'Usuario no existe',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+          }
 
     const startLoadingCloseSesssion = () => {
         dispatch( onCloseSession() )

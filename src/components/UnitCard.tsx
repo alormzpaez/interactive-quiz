@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { UnitDataToShow } from '../interfaces';
 import { useProblemsToSolve } from '../hooks';
 import { CurrentProblemShowing } from '../interfaces/ProblemSlice';
-
+import Swal from 'sweetalert2'
 export const UnitCard: FC<UnitDataToShow> = ({ description,id,name,topics }) => {
   const navigate = useNavigate();
   const { 
@@ -25,7 +25,13 @@ export const UnitCard: FC<UnitDataToShow> = ({ description,id,name,topics }) => 
       return;
     }
 
-    alert("Ya no hay problemas disponibles para la unidad y metodo")
+    
+    Swal.fire({
+      title: 'Advertencia!',
+      text: 'Ya no hay problemas disponibles para la unidad y metodo',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    })
     
   }
   return (

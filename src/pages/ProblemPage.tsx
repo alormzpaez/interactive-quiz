@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProblemsToSolve } from '../hooks';
 import { Timer } from '../components';
-
+import Swal from 'sweetalert2'
 export const ProblemPage = () => {
   const navigate = useNavigate();
   const [optionSelected, setOptionSelected] = useState<number>();
@@ -27,7 +27,12 @@ export const ProblemPage = () => {
   }
   const handleSubmitProblem = async() => {
     if(optionSelected === undefined) {
-      alert("Por favor seleccione una opción");
+      Swal.fire({
+        title: 'Advertencia',
+        text: 'Por favor seleccione una opción',
+        icon: 'info',
+        confirmButtonText: 'Ok'
+      })
       return;
     }
     // TODO: Save problem solved and update state
@@ -48,7 +53,12 @@ export const ProblemPage = () => {
   }
 
   const handleOnComplete = () => {
-    alert("Fin del tiempo, practica más.")
+    Swal.fire({
+      title: 'Tiempo terminado',
+      text: 'Fin del tiempo, practica más.',
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
     navigate("/");
   }
 

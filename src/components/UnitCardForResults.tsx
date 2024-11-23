@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { UnitDataToShow } from '../interfaces';
 import { useProblemsToSolve, useUnits } from '../hooks';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
-
+import Swal from 'sweetalert2'
 export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,topics }) => {
   
   const navigate = useNavigate();
@@ -44,7 +44,13 @@ export const UnitCardForResults: FC<UnitDataToShow> = ({ description,id,name,top
       return;
     }
 
-    alert("Error al obtener el problema")
+     
+    Swal.fire({
+      title: 'Error!',
+      text: 'Error al obtener el problema',
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
     
   }
 
